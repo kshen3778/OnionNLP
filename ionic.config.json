@@ -1,0 +1,7 @@
+{
+  "name": "onionnlp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
