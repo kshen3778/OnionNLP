@@ -1,7 +1,8 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      OnionNLP
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +10,36 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">OnionNLP</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <strong>Welcome to OnionNLP News Summarizer </strong>
+    <ion-item>
+      <ion-label>Article URL:</ion-label>
+      <ion-input placeholder="Enter URL" [(ngModel)]="url"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Article Language:</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="language">
+        <ion-select-option value="en">English</ion-select-option>
+        <ion-select-option value="zh">Chinese</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+    <ion-button expand="block" (click)="getArticle()">Summarize</ion-button>
+    <br>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{title}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{text}}
+      </ion-card-content>
+    </ion-card>
+
   </div>
 </ion-content>
