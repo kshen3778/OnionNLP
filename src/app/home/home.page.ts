@@ -7,14 +7,16 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  text: string;
-  title: string;
-  url: string;
-  language: string;
+  text: any;
+  title: any;
+  url: any;
+  language: any;
+  nval: any;
 
   constructor(private http: HttpClient) {
     this.text = "";
     this.title = "";
+    this.nval = 1;
   }
 
   getArticle(){
@@ -30,26 +32,28 @@ export class HomePage {
     let data = {
       "url": this.url,
       "language": this.language
-    }
+    };
 
     this.http
     .post("http://127.0.0.1:5000/get_article", data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     }).subscribe(
-      res => {
-        console.log(res);
+      (res: any) => {
         this.title = res.title;
         this.text = "Please Wait. Analyzing Text ... ";
 
+        console.log(this.nval);
         //Summarization
         let sum_data = {
           "text": res.text,
-          "select_n": 5
+          "select_n": parseInt(this.nval)
         }
         this.http.post("http://127.0.0.1:5000/api", sum_data, {
           headers: new HttpHeaders().set('Content-Type', 'application/json')
-        }).subscribe(res2 => {
-            this.text = res2
+        }).subscribe( (res2: any) => {
+            console.log(res2);
+            let toDisplay = res2.join(". \r\n");
+            this.text = toDisplay;
 
           },
           (err2: HttpErrorResponse) => {
