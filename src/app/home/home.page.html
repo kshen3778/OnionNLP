@@ -14,7 +14,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
+  <div padding="false" overflow-scroll="false" id="container">
     <strong>Welcome to OnionNLP News Summarizer </strong>
     <ion-item>
       <ion-label>Article URL:</ion-label>
@@ -39,15 +39,15 @@
     <ion-button expand="block" (click)="getArticle()">Summarize</ion-button>
     <br>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>{{title}}</ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content class="ion-text-left">
-        <pre>{{text}}</pre>
-      </ion-card-content>
-    </ion-card>
-
   </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{title}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content class="ion-text-left">
+      <pre>{{text}}</pre>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

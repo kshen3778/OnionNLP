@@ -16,7 +16,8 @@ export class HomePage {
   constructor(private http: HttpClient) {
     this.text = "";
     this.title = "";
-    this.nval = 1;
+    this.nval = 3;
+    this.language = "en";
   }
 
   getArticle(){
@@ -35,7 +36,7 @@ export class HomePage {
     };
 
     this.http
-    .post("http://127.0.0.1:5000/get_article", data, {
+    .post("https://onion-backend-ef2kdcjinq-ue.a.run.app/get_article", data, {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     }).subscribe(
       (res: any) => {
@@ -48,11 +49,11 @@ export class HomePage {
           "text": res.text,
           "select_n": parseInt(this.nval)
         }
-        this.http.post("http://127.0.0.1:5000/api", sum_data, {
+        this.http.post("https://onion-backend-ef2kdcjinq-ue.a.run.app/api", sum_data, {
           headers: new HttpHeaders().set('Content-Type', 'application/json')
         }).subscribe( (res2: any) => {
             console.log(res2);
-            let toDisplay = res2.join(". \r\n");
+            let toDisplay = res2.join("\n");
             this.text = toDisplay;
 
           },
