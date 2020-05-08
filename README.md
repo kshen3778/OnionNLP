@@ -10,6 +10,7 @@ Our NLP algorithms perform extractive text summarization and clustering to find 
 <br>
 Users can adjust the level of summarization.
 <br>
+<br>
 List of things todo:
 - More robust text preprocessing to extract sentences
 - Neural coreference resolution
